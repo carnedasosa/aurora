@@ -19,16 +19,16 @@ export default function Home() {
     <>
       <Navbar />
       <main>
-        <Hero />
         <About />
+        <Hero />
         <Services />
         <WhyChoose />
-        <Portfolio />
-        <BeforeAfter />
+        {/*<Portfolio />*/}
+        {/*<BeforeAfter />*/}
         <Reviews />
         <Policy />
         <Hygiene />
-        <Products />
+        {/*<Products />*/}
         <FAQ />
         <Contact />
       </main>

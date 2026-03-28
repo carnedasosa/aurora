@@ -2,33 +2,27 @@ import styles from './Services.module.css'
 
 const services = [
   {
-    name: 'Semipermanente',
-    price: '25€',
-    description: 'Smalto a lunga durata per un colore brillante e impeccabile che dura fino a 3 settimane senza sbeccature.',
-    duration: '45 min',
-  },
-  {
     name: 'Copertura gel',
     price: '35€',
-    description: 'Rinforzo naturale delle unghie con gel di alta qualità per un risultato resistente e luminoso.',
-    duration: '60 min',
+    description: 'Rinforzo naturale delle unghie con gel di alta qualità per un risultato resistente e luminoso. Unghia corta media e lunga',
+    duration: 'variabile',
   },
   {
-    name: 'Refill',
-    price: '40€',
-    description: 'Manutenzione della ricostruzione per mantenere le tue unghie sempre perfette e curate.',
-    duration: '75 min',
+    name: 'Refil correttivo',
+    price: 'da 5€',
+    description: 'Correzione strutturale',
+    duration: 'variabile',
   },
   {
     name: 'Ricostruzione',
     price: '50€',
     description: 'Allungamento e ricostruzione completa per unghie eleganti, resistenti e dalla forma impeccabile.',
-    duration: '90 min',
+    duration: 'variabile',
   },
   {
-    name: 'Nail art',
-    price: 'da 5€',
-    description: 'Decorazioni artistiche personalizzate per rendere le tue unghie uniche e in linea con il tuo stile.',
+    name: 'French muretto',
+    price: '50€',
+    description: "L'eccellenza della ricostruzione avanzata per una French impeccabile",
     duration: 'variabile',
   },
 ]
@@ -58,7 +52,7 @@ export default function Services() {
             <div key={index} className={styles.card}>
               <div className={styles.cardHeader}>
                 <h3 className={styles.serviceName}>{service.name}</h3>
-                <span className={styles.servicePrice}>{service.price}</span>
+              {/*  <span className={styles.servicePrice}>{service.price}</span>*/}
               </div>
               <p className={styles.serviceDescription}>{service.description}</p>
               <div className={styles.cardFooter}>
@@ -72,11 +66,11 @@ export default function Services() {
         </div>
         
         <div className={styles.cta}>
-          <p className={styles.ctaText}>
-            Hai domande sui trattamenti o desideri un preventivo personalizzato?
-          </p>
+        <p className={styles.ctaText}>
+              Raccontami il risultato che desideri: così potrò consigliarti il trattamento più adatto.
+        </p>
           <a 
-            href="https://wa.me/393331234567?text=Ciao%20Aurora%2C%20vorrei%20informazioni%20sui%20servizi."
+            href="https://wa.me/393519469634?text=Ciao%20Aurora%2C%20vorrei%20ricevere%20una%20consulenza%20personalizzata.%0A%0ATi%20invio%20le%20foto%20attuali%20delle%20mie%20unghie%3A%0A-%20foto%20frontale%0A-%20foto%20laterale%20destra%0A-%20foto%20laterale%20sinistra%0A%0AInoltre%20ti%20scrivo%20anche%20cosa%20vorrei%20realizzare%20come%20risultato%20finale.%20Cos%C3%AC%20potrai%20consigliarmi%20il%20trattamento%20pi%C3%B9%20adatto."
             className={styles.ctaButton}
             target="_blank"
             rel="noopener noreferrer"

@@ -9,6 +9,37 @@
   padding: 0 var(--container-padding);
 }
 
+.cta {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--color-secondary-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.cta p {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.instagramButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: all var(--transition-normal);
+}
+
+.instagramButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(220, 39, 67, 0.3);
+}
+
 .eyebrow {
   display: block;
   text-align: center;

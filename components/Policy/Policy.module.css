@@ -1,6 +1,6 @@
 .policy {
   padding: var(--spacing-3xl) 0;
-  background-color: var(--color-secondary-bg);
+  background-color: var(--color-primary-bg);
 }
 
 .container {
@@ -48,7 +48,7 @@
   display: flex;
   gap: 1rem;
   padding: 1.5rem;
-  background-color: var(--color-primary-bg);
+  background-color: var(--color-secondary-bg);
   border-radius: var(--radius-md);
   transition: all var(--transition-normal);
 }

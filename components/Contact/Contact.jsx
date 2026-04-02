@@ -92,9 +92,7 @@ export default function Contact() {
         
         <div className={styles.mapWrapper}>
           <div className={styles.mapPlaceholder}>
-            <LocationIcon />
-            <span>Mappa di Sannicandro di Bari</span>
-            <small>Via Roma 25</small>
+          <iframe className={styles.iframe} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12044.281575927613!2d16.77579719117184!3d41.0018324227373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347ecb602a7ab85%3A0x45d6054e6e1faad9!2sVia%20Armando%20Diaz%2C%2083%2C%2070028%20Sannicandro%20di%20Bari%20BA!5e0!3m2!1sit!2sit!4v1774711682806!5m2!1sit!2sit" style={{width: '100%', height: '100%', border: 0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>

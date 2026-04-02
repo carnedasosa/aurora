@@ -20,7 +20,7 @@ export default function About() {
         </div>
         
         <div className={styles.contentColumn}>
-          <span className={styles.eyebrow}>Chi sono</span>
+          {/* <span className={styles.eyebrow}>Chi sono</span> */}
           <h2 className={styles.title}>
             Passione, precisione e un tocco di eleganza
           </h2>

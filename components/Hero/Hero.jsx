@@ -57,10 +57,10 @@ export default function Hero() {
         </div>
       </div>
       
-      <div className={styles.scrollIndicator}>
+      {/* <div className={styles.scrollIndicator}>
         <span>Scorri</span>
         <div className={styles.scrollLine}></div>
-      </div>
+      </div> */}
     </section>
   )
 }

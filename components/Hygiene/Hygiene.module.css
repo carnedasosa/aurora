@@ -1,6 +1,6 @@
 .hygiene {
   padding: var(--spacing-3xl) 0;
-  background-color: var(--color-primary-bg);
+  background-color: var(--color-secondary-bg);
 }
 
 .container {
@@ -64,7 +64,7 @@
   display: flex;
   gap: 1.25rem;
   padding: 1.5rem;
-  background-color: var(--color-secondary-bg);
+  background-color: var(--color-primary-bg);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   transition: all var(--transition-normal);

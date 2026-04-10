@@ -1,3 +1,4 @@
+import ScrollReveal from '../shared/ScrollReveal'
 import styles from './Contact.module.css'
 
 function WhatsAppIcon() {
@@ -37,17 +38,17 @@ export default function Contact() {
   return (
     <section id="contatti" className={styles.contact}>
       <div className={styles.container}>
-        <div className={styles.content}>
+        <ScrollReveal className={styles.content}>
           <span className={styles.eyebrow}>Prenota ora</span>
           <h2 className={styles.title}>Contatti</h2>
           <p className={styles.description}>
-            Sono a Sannicandro di Bari e provincia. Contattami per prenotare 
+            Sono a Sannicandro di Bari e provincia. Contattami per prenotare
             il tuo appuntamento o per qualsiasi informazione sui trattamenti.
           </p>
-          
+
           <div className={styles.contactMethods}>
-            <a 
-              href="https://wa.me/393331234567?text=Ciao%20Aurora%2C%20vorrei%20prenotare%20un%20appuntamento."
+            <a
+              href="https://wa.me/393398274876?text=Ciao%20Aurora%2C%20vorrei%20prenotare%20un%20appuntamento."
               className={styles.whatsappButton}
               target="_blank"
               rel="noopener noreferrer"
@@ -55,20 +56,20 @@ export default function Contact() {
               <WhatsAppIcon />
               <div>
                 <span className={styles.methodLabel}>WhatsApp</span>
-                <span className={styles.methodValue}>+39 333 123 4567</span>
+                <span className={styles.methodValue}>+39 339 827 4876</span>
               </div>
             </a>
-            
-            <a href="tel:+390801234567" className={styles.contactCard}>
+
+            <a href="tel:+393398274876" className={styles.contactCard}>
               <PhoneIcon />
               <div>
                 <span className={styles.methodLabel}>Telefono</span>
-                <span className={styles.methodValue}>+39 080 123 4567</span>
+                <span className={styles.methodValue}>+39 339 827 4876</span>
               </div>
             </a>
-            
-            <a 
-              href="https://instagram.com/auroratesoronails" 
+
+            <a
+              href="https://instagram.com/auroratesoronails"
               className={styles.contactCard}
               target="_blank"
               rel="noopener noreferrer"
@@ -80,7 +81,7 @@ export default function Contact() {
               </div>
             </a>
           </div>
-          
+
           <div className={styles.address}>
             <LocationIcon />
             <div>
@@ -88,13 +89,20 @@ export default function Contact() {
               <span className={styles.addressValue}>Via Roma 25, Sannicandro di Bari (BA)</span>
             </div>
           </div>
-        </div>
-        
-        <div className={styles.mapWrapper}>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.2} className={styles.mapWrapper}>
           <div className={styles.mapPlaceholder}>
-          <iframe className={styles.iframe} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12044.281575927613!2d16.77579719117184!3d41.0018324227373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347ecb602a7ab85%3A0x45d6054e6e1faad9!2sVia%20Armando%20Diaz%2C%2083%2C%2070028%20Sannicandro%20di%20Bari%20BA!5e0!3m2!1sit!2sit!4v1774711682806!5m2!1sit!2sit" style={{width: '100%', height: '100%', border: 0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            <iframe
+              className={styles.iframe}
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12044.281575927613!2d16.77579719117184!3d41.0018324227373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347ecb602a7ab85%3A0x45d6054e6e1faad9!2sVia%20Armando%20Diaz%2C%2083%2C%2070028%20Sannicandro%20di%20Bari%20BA!5e0!3m2!1sit!2sit!4v1774711682806!5m2!1sit!2sit"
+              style={{ width: '100%', height: '100%', border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   )

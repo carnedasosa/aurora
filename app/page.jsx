@@ -19,6 +19,7 @@ export default function Home() {
     <>
       <Navbar />
       <main>
+        <div id="home" style={{ position: 'absolute', top: 0 }} />
         <About />
         <Hero />
         <Services />

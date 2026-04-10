@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react'
 import styles from './Navbar.module.css'
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#chi-sono', label: 'Chi sono' },
-  { href: '#servizi', label: 'Servizi' },
-  { href: '#recensioni', label: 'Recensioni' },
+  { href: '#home', label: 'HOME' },
+  { href: '#chi-sono', label: 'CHI SONO' },
+  { href: '#servizi', label: 'SERVIZI' },
+  { href: '#recensioni', label: 'RECENSIONI' },
   { href: '#faq', label: 'FAQ' },
-  { href: '#contatti', label: 'Contatti' },
+  { href: '#contatti', label: 'CONTATTI' },
 ]
 
 export default function Navbar() {

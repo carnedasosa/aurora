@@ -1,3 +1,4 @@
+import ScrollReveal from '../shared/ScrollReveal'
 import styles from './Hero.module.css'
 
 const badges = [
@@ -15,28 +16,29 @@ function WhatsAppIcon() {
 
 export default function Hero() {
   return (
-    <section id="home" className={styles.hero}>
+    <section className={styles.hero}>
+      <div className={styles.orb1} />
+      <div className={styles.orb2} />
+
       <div className={styles.container}>
-        <div className={styles.content}>
+        <ScrollReveal className={styles.content} duration={0.9}>
           <div className={styles.badges}>
             {badges.map((badge, index) => (
-              <span key={index} className={styles.badge}>
-                {badge}
-              </span>
+              <span key={index} className={styles.badge}>{badge}</span>
             ))}
           </div>
-          
+
           <h1 className={styles.headline}>
             Eleganza, tecnica e cura in ogni dettaglio.
           </h1>
-          
+
           <p className={styles.subheadline}>
-            Trattamenti unghie premium a Sannicandro di Bari per chi cerca risultati raffinati, 
-            precisione e un'esperienza professionale.
+            Trattamenti unghie premium a Sannicandro di Bari per chi cerca risultati raffinati,
+            precisione e un&apos;esperienza professionale.
           </p>
-          
+
           <div className={styles.ctas}>
-            <a 
+            <a
               href="https://wa.me/393398274876?text=Ciao%20Aurora%2C%20vorrei%20prenotare%20un%20appuntamento."
               className={styles.primaryCta}
               target="_blank"
@@ -49,18 +51,14 @@ export default function Hero() {
               Scopri i servizi
             </a>
           </div>
-        </div>
-        
-        <div className={styles.imageWrapper}>
-          <div className={styles.imagePlaceholder}></div>
-          <div className={styles.imageAccent}></div>
-        </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.2} className={styles.imageWrapper}>
+          <div className={styles.imagePlaceholder} />
+          <div className={styles.imageAccent} />
+          <div className={styles.imageGlow} />
+        </ScrollReveal>
       </div>
-      
-      {/* <div className={styles.scrollIndicator}>
-        <span>Scorri</span>
-        <div className={styles.scrollLine}></div>
-      </div> */}
     </section>
   )
 }

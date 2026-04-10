@@ -1,6 +1,8 @@
 .contact {
   padding: var(--spacing-3xl) 0;
   background-color: var(--color-secondary-bg);
+  position: relative;
+  overflow: hidden;
 }
 
 .container {
@@ -11,21 +13,17 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-}
-
-.iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow {
   display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.8125rem;
+  font-weight: 600;
   color: var(--color-accent);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   margin-bottom: 0.75rem;
 }
 
@@ -35,11 +33,12 @@
   font-weight: 500;
   color: var(--color-text-primary);
   margin-bottom: 1rem;
+  letter-spacing: -0.01em;
 }
 
 .description {
   font-size: 1.0625rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--color-text-secondary);
   margin-bottom: 2rem;
 }
@@ -47,8 +46,8 @@
 .contactMethods {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.875rem;
+  margin-bottom: 1.25rem;
 }
 
 .whatsappButton {
@@ -56,58 +55,54 @@
   align-items: center;
   gap: 1rem;
   padding: 1.25rem 1.5rem;
-  background-color: #25D366;
+  background: #25D366;
   color: white;
   border-radius: var(--radius-md);
-  transition: all var(--transition-normal);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
 }
 
 .whatsappButton:hover {
-  background-color: #20bd5a;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+  background: #20bd5a;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(37, 211, 102, 0.35);
 }
 
-.whatsappButton svg {
-  flex-shrink: 0;
-}
+.whatsappButton svg { flex-shrink: 0; }
 
 .contactCard {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1.25rem 1.5rem;
-  background-color: var(--color-primary-bg);
-  border: 1px solid var(--color-border);
+  background: var(--color-primary-bg);
+  border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
-  transition: all var(--transition-normal);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   color: var(--color-text-primary);
+  box-shadow: var(--shadow-soft);
 }
 
 .contactCard:hover {
-  border-color: var(--color-accent);
+  border-color: rgba(199, 168, 109, 0.5);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
 }
 
-.contactCard svg {
-  flex-shrink: 0;
-  color: var(--color-accent);
-}
+.contactCard svg { flex-shrink: 0; color: var(--color-accent); }
 
 .methodLabel {
   display: block;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: inherit;
-  opacity: 0.7;
+  opacity: 0.65;
   margin-bottom: 0.125rem;
 }
 
-.whatsappButton .methodLabel {
-  color: white;
-}
+.whatsappButton .methodLabel { color: white; }
 
 .methodValue {
   display: block;
@@ -120,22 +115,19 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.25rem 1.5rem;
-  background-color: var(--color-accent-soft);
+  background: linear-gradient(135deg, var(--color-accent-xsoft), var(--color-accent-soft));
   border-radius: var(--radius-md);
+  border: 1px solid rgba(199, 168, 109, 0.2);
 }
 
-.address svg {
-  flex-shrink: 0;
-  color: var(--color-accent);
-  margin-top: 0.125rem;
-}
+.address svg { flex-shrink: 0; color: var(--color-accent); margin-top: 0.125rem; }
 
 .addressLabel {
   display: block;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: var(--color-text-secondary);
   margin-bottom: 0.125rem;
 }
@@ -149,49 +141,29 @@
 
 .mapWrapper {
   height: 100%;
-  min-height: 400px;
+  min-height: 420px;
 }
 
 .mapPlaceholder {
   width: 100%;
   height: 100%;
-  min-height: 400px;
-  background: linear-gradient(135deg, var(--color-accent-soft) 0%, var(--color-border) 100%);
-  border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  color: var(--color-text-secondary);
+  min-height: 420px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-strong);
+  position: relative;
 }
 
-.mapPlaceholder svg {
-  width: 48px;
-  height: 48px;
-  opacity: 0.5;
-}
-
-.mapPlaceholder small {
-  font-size: 0.875rem;
-  opacity: 0.7;
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 
 @media (max-width: 968px) {
-  .container {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  .mapWrapper {
-    min-height: 300px;
-  }
-
-  .mapPlaceholder {
-    min-height: 300px;
-  }
+  .container { grid-template-columns: 1fr; gap: 3rem; }
+  .title { font-size: 2rem; }
+  .mapWrapper { min-height: 320px; }
+  .mapPlaceholder { min-height: 320px; }
 }

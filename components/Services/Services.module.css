@@ -78,6 +78,9 @@
   box-shadow: var(--shadow-soft);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
   cursor: default;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -110,11 +113,13 @@
   color: var(--color-text-secondary);
   line-height: 1.7;
   margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
 .cardFooter {
   border-top: 1px solid var(--color-border);
   padding-top: 1rem;
+  margin-top: auto;
 }
 
 .duration {

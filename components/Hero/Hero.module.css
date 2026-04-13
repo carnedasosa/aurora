@@ -16,10 +16,18 @@
   top: -200px;
   right: -200px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(199, 168, 109, 0.15) 0%, transparent 70%);
-  filter: blur(100px);
+  /* Using multi-stop gradient to simulate blur without performance cost */
+  background: radial-gradient(
+    circle at center,
+    rgba(199, 168, 109, 0.15) 0%,
+    rgba(199, 168, 109, 0.08) 30%,
+    rgba(199, 168, 109, 0.03) 60%,
+    transparent 80%
+  );
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .orb2 {
@@ -29,19 +37,32 @@
   bottom: -150px;
   left: -150px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(231, 215, 188, 0.25) 0%, transparent 70%);
-  filter: blur(80px);
+  /* Using multi-stop gradient to simulate blur without performance cost */
+  background: radial-gradient(
+    circle at center,
+    rgba(231, 215, 188, 0.2) 0%,
+    rgba(231, 215, 188, 0.1) 40%,
+    rgba(231, 215, 188, 0.02) 70%,
+    transparent 90%
+  );
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .chromaticOrb {
   position: absolute;
   inset: -20px;
-  background: radial-gradient(circle, rgba(255,0,0,0.05) 0%, rgba(0,255,255,0.05) 50%, transparent 70%);
-  filter: blur(40px);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 0, 0, 0.03) 0%,
+    rgba(0, 255, 255, 0.03) 40%,
+    transparent 70%
+  );
   z-index: -1;
   mix-blend-mode: screen;
+  will-change: transform;
 }
 
 .container {
@@ -183,9 +204,16 @@
   right: -15%;
   width: 140%;
   height: 140%;
-  background: radial-gradient(circle, rgba(199, 168, 109, 0.15) 0%, transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgba(199, 168, 109, 0.1) 0%,
+    rgba(199, 168, 109, 0.04) 40%,
+    transparent 70%
+  );
   z-index: 1;
   pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .imageGlow {
@@ -210,6 +238,10 @@
   .subheadline { font-size: 1.125rem; }
   .imageWrapper { order: -1; }
   .imagePlaceholder { aspect-ratio: 16/10; }
+  
+  /* Reduce orb sizes/opacity on mobile for performance */
+  .orb1 { width: 400px; height: 400px; opacity: 0.6; }
+  .orb2 { width: 300px; height: 300px; opacity: 0.6; }
   .imageAccent { display: none; }
 }
 

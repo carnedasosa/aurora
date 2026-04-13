@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import styles from './Hero.module.css';
@@ -31,30 +31,56 @@ const letterVariants = {
   }),
 };
 
+// Simplified line variant for mobile performance
+const lineVariants = {
+  hidden: { y: 30, opacity: 0 },
+  visible: (i) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      delay: 0.5 + (i * 0.2),
+      ease: "easeOut",
+    },
+  }),
+};
+
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
   const line1 = "Eleganza, tecnica";
   const line2 = "e cura in ogni dettaglio.";
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <section className={styles.hero}>
       {/* Liquid Background Orbs */}
       <motion.div 
         animate={{ 
-          x: [0, 60, -40, 0],
-          y: [0, -40, 30, 0],
-          scale: [1, 1.15, 0.85, 1]
+          x: isMobile ? [0, 20, -10, 0] : [0, 60, -40, 0],
+          y: isMobile ? [0, -10, 15, 0] : [0, -40, 30, 0],
+          scale: [1, 1.1, 0.95, 1]
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         className={styles.orb1} 
+        style={{ translateZ: 0 }}
       />
       <motion.div 
         animate={{ 
-          x: [0, -50, 60, 0],
-          y: [0, 30, -50, 0],
-          scale: [1, 0.8, 1.2, 1]
+          x: isMobile ? [0, -15, 20, 0] : [0, -50, 60, 0],
+          y: isMobile ? [0, 10, -20, 0] : [0, 30, -50, 0],
+          scale: [1, 0.9, 1.1, 1]
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         className={styles.orb2} 
+        style={{ translateZ: 0 }}
       />
 
       <div className={styles.container}>
@@ -72,39 +98,63 @@ export default function Hero() {
 
           <h1 className={styles.headline}>
             <span className={styles.line}>
-              {line1.split('').map((char, i) => (
+              {isMobile ? (
                 <motion.span
-                  key={i}
-                  custom={i}
-                  variants={letterVariants}
+                  variants={lineVariants}
                   initial="hidden"
                   animate="visible"
+                  custom={0}
                   style={{ display: 'inline-block' }}
                 >
-                  {char === ' ' ? '\u00A0' : char}
+                  {line1}
                 </motion.span>
-              ))}
+              ) : (
+                line1.split('').map((char, i) => (
+                  <motion.span
+                    key={i}
+                    custom={i}
+                    variants={letterVariants}
+                    initial="hidden"
+                    animate="visible"
+                    style={{ display: 'inline-block' }}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </motion.span>
+                ))
+              )}
             </span>
             <span className={`${styles.line} ${styles.italic}`}>
-              {line2.split('').map((char, i) => (
+              {isMobile ? (
                 <motion.span
-                  key={i}
-                  custom={i + line1.length}
-                  variants={letterVariants}
+                  variants={lineVariants}
                   initial="hidden"
                   animate="visible"
+                  custom={1}
                   style={{ display: 'inline-block' }}
                 >
-                  {char === ' ' ? '\u00A0' : char}
+                  {line2}
                 </motion.span>
-              ))}
+              ) : (
+                line2.split('').map((char, i) => (
+                  <motion.span
+                    key={i}
+                    custom={i + line1.length}
+                    variants={letterVariants}
+                    initial="hidden"
+                    animate="visible"
+                    style={{ display: 'inline-block' }}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </motion.span>
+                ))
+              )}
             </span>
           </h1>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.5 }}
+            transition={{ duration: 1, delay: isMobile ? 1 : 1.5 }}
             className={styles.subheadline}
           >
             Trattamenti unghie premium a Sannicandro di Bari per chi cerca risultati raffinati,
@@ -114,7 +164,7 @@ export default function Hero() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 1.8 }}
+            transition={{ duration: 0.8, delay: isMobile ? 1.2 : 1.8 }}
             className={styles.ctas}
           >
             <motion.a
@@ -135,8 +185,8 @@ export default function Hero() {
         </div>
 
         <motion.div 
-          initial={{ opacity: 0, x: 100, rotate: 5 }}
-          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          initial={{ opacity: 0, x: isMobile ? 0 : 100, y: isMobile ? 50 : 0, rotate: isMobile ? 0 : 5 }}
+          animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
           transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className={styles.imageWrapper}
         >
@@ -150,13 +200,16 @@ export default function Hero() {
               style={{ objectFit: 'cover' }} 
             />
           </div>
-          <motion.div 
-            animate={{ 
-              rotate: [0, 360],
-            }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className={styles.imageAccent} 
-          />
+          {!isMobile && (
+            <motion.div 
+              animate={{ 
+                rotate: [0, 360],
+              }}
+              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+              className={styles.imageAccent} 
+              style={{ translateZ: 0 }}
+            />
+          )}
           <div className={styles.chromaticOrb} />
         </motion.div>
       </div>

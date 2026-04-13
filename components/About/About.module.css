@@ -1,88 +1,55 @@
+/* =====================================================
+   ABOUT / CHI SONO — Layout semplice e pulito
+   Mano a sinistra, testo a destra
+   ===================================================== */
+
 .about {
-  padding: var(--spacing-4xl) 0;
+  padding: var(--spacing-3xl) 0;
   background-color: var(--color-primary-bg);
+  /* Allow the hand to bleed out of the left edge */
+  overflow: visible;
   position: relative;
-  overflow: hidden;
 }
 
-.container {
+/* 
+  The inner div uses a flex layout:
+  - handCol: sits flush against the left viewport edge
+  - textCol: natural flow, takes the remaining space
+*/
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-padding);
+  /* Pull the whole row to the left so the hand can touch the viewport edge */
+  margin-left: 0;
+  padding-left: 0;
 }
 
-.editorialGrid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 8rem;
-  align-items: flex-start;
+/* === HAND COLUMN === */
+.handCol {
+  flex: 0 0 auto;
+  /* The image itself defines the width; we just make sure there is no clipping */
+  line-height: 0;
+  /* Drop shadow follows the PNG silhouette, not a box */
+  filter: drop-shadow(16px 12px 24px rgba(0, 0, 0, 0.12));
 }
 
-.imageSection {
-  position: relative;
-  padding-top: 4rem; /* Staggered effect */
-}
-
-.imageWrapper {
-  position: relative;
-  z-index: 2;
-}
-
-.imagePlaceholder {
+.handCol img {
   display: block;
-  width: 100%;
-  aspect-ratio: 4/5;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-luxury-lg);
-  position: relative;
-  overflow: hidden;
+  max-width: 420px;
+  width: 35vw;
+  min-width: 220px;
+  height: auto;
 }
 
-.decorOrb {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  top: 20%;
-  left: -10%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(199, 168, 109, 0.12) 0%, transparent 70%);
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.imageStripe {
-  position: absolute;
-  top: 0;
-  left: -20px;
-  width: 100%;
-  height: 100%;
-  border: 1px solid var(--color-accent-soft);
-  border-radius: var(--radius-lg);
-  z-index: 1;
-}
-
-.floatingCard {
-  position: absolute;
-  bottom: 2rem;
-  right: -2rem;
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  padding: 1.25rem 1.75rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-luxury-md);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  border: 1px solid var(--glass-border);
-}
-
-.cardText {
-  font-weight: 700;
-  font-size: 0.875rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-text-primary);
+/* === TEXT COLUMN === */
+.textCol {
+  flex: 1 1 0;
+  min-width: 0;
+  padding-right: var(--container-padding);
 }
 
 .eyebrow {
@@ -91,16 +58,16 @@
   font-weight: 800;
   color: var(--color-accent);
   letter-spacing: 0.2em;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .title {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.15;
   color: var(--color-text-primary);
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .italicTitle {
@@ -109,43 +76,29 @@
   color: var(--color-accent);
 }
 
-.description {
-  margin-top: 2rem;
-}
-
-.dropCapPara::first-letter {
-  font-family: var(--font-serif);
-  font-size: 4.5rem;
-  float: left;
-  line-height: 1;
-  margin-right: 0.75rem;
-  color: var(--color-accent);
-  font-weight: 900;
-}
-
 .description p {
-  font-size: 1.125rem;
+  font-size: 1.05rem;
   line-height: 1.8;
   color: var(--color-text-secondary);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .pullQuote {
   font-family: var(--font-serif);
-  font-size: 1.75rem;
+  font-size: 1.4rem;
   font-style: italic;
   color: var(--color-text-primary);
-  border-left: 4px solid var(--color-accent);
-  padding-left: 2rem;
-  margin: 4rem 0;
-  line-height: 1.4;
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.5rem;
+  margin: 2.5rem 0;
+  line-height: 1.5;
 }
 
 .statsRow {
   display: flex;
-  gap: 4rem;
-  margin-top: 5rem;
-  padding-top: 3rem;
+  gap: 3rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--color-border);
 }
 
@@ -156,37 +109,63 @@
 
 .statValue {
   font-family: var(--font-serif);
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--color-text-primary);
   line-height: 1;
 }
 
 .statLabel {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   color: var(--color-accent);
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
 }
 
+/* ===================================================
+   MOBILE — stack vertically, hand on top
+   =================================================== */
 @media (max-width: 1024px) {
-  .editorialGrid {
-    grid-template-columns: 1fr;
-    gap: 4rem;
+  .inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0;
+    gap: 2rem;
   }
-  .imageSection {
+
+  .handCol {
+    /* On mobile: full-width strip at the top, still left-anchored */
     width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding-top: 0;
   }
-  .imageStripe { display: none; }
+
+  .handCol img {
+    width: 70vw;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .textCol {
+    padding: 0 var(--container-padding);
+  }
+
+  .statsRow {
+    flex-direction: row;
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .title { font-size: 2.25rem; }
-  .pullQuote { font-size: 1.5rem; }
-  .floatingCard { right: 0; bottom: -1rem; }
-  .statsRow { flex-direction: column; gap: 2rem; }
+  .handCol img {
+    width: 85vw;
+  }
+
+  .statsRow {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .pullQuote {
+    font-size: 1.2rem;
+  }
 }

@@ -47,8 +47,8 @@ const lineVariants = {
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
-  const line1 = "Eleganza, tecnica";
-  const line2 = "e cura in ogni dettaglio.";
+  const line1 = "Aurora Tesoro,";
+  const line2 = "la tua Nail Expert.";
 
   useEffect(() => {
     const checkMobile = () => {
@@ -61,27 +61,30 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
-      {/* Liquid Background Orbs */}
-      <motion.div 
-        animate={{ 
-          x: isMobile ? [0, 20, -10, 0] : [0, 60, -40, 0],
-          y: isMobile ? [0, -10, 15, 0] : [0, -40, 30, 0],
-          scale: [1, 1.1, 0.95, 1]
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className={styles.orb1} 
-        style={{ translateZ: 0 }}
-      />
-      <motion.div 
-        animate={{ 
-          x: isMobile ? [0, -15, 20, 0] : [0, -50, 60, 0],
-          y: isMobile ? [0, 10, -20, 0] : [0, 30, -50, 0],
-          scale: [1, 0.9, 1.1, 1]
-        }}
-        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className={styles.orb2} 
-        style={{ translateZ: 0 }}
-      />
+      {!isMobile && (
+        <>
+          <motion.div 
+            animate={{ 
+              x: [0, 60, -40, 0],
+              y: [0, -40, 30, 0],
+              scale: [1, 1.1, 0.95, 1]
+            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className={styles.orb1} 
+            style={{ translateZ: 0 }}
+          />
+          <motion.div 
+            animate={{ 
+              x: [0, -50, 60, 0],
+              y: [0, 30, -50, 0],
+              scale: [1, 0.9, 1.1, 1]
+            }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className={styles.orb2} 
+            style={{ translateZ: 0 }}
+          />
+        </>
+      )}
 
       <div className={styles.container}>
         <div className={styles.content}>
@@ -157,8 +160,9 @@ export default function Hero() {
             transition={{ duration: 1, delay: isMobile ? 1 : 1.5 }}
             className={styles.subheadline}
           >
-            Trattamenti unghie premium a Sannicandro di Bari per chi cerca risultati raffinati,
-            precisione e un&apos;esperienza professionale.
+            Benvenuta nel mio spazio dedicato all&apos;eleganza e alla cura tecnica. 
+            Offro trattamenti unghie premium a Sannicandro di Bari per chi cerca precisione, 
+            risultati raffinati e un&apos;esperienza professionale su misura.
           </motion.p>
 
           <motion.div 

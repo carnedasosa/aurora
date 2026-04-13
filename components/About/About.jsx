@@ -7,29 +7,42 @@ import styles from './About.module.css';
 
 const stats = [
   { label: 'ANNI DI ARTE', value: '8+', numeric: 8 },
-  { label: 'CLIENTI SOIDDISFATTE', value: '1000+', numeric: 1000 },
+  { label: 'CLIENTI SODDISFATTE', value: '1000+', numeric: 1000 },
 ];
+
+function SparkleIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 1l2.75 8.26H23l-7 5.09 2.75 8.26L12 17.52l-6.75 5.09L8 14.35 1 9.26h8.25z"/>
+    </svg>
+  );
+}
 
 function StatItem({ stat }) {
   const { count, ref } = useCountUp(stat.numeric, { duration: 1.8 });
   const suffix = stat.value.replace(String(stat.numeric), '');
   return (
-    <div ref={ref} className={styles.statItem}>
+    <motion.div
+      ref={ref}
+      className={styles.statItem}
+      whileHover={{ y: -4, scale: 1.02 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+    >
       <span className={styles.statValue}>{count}{suffix}</span>
       <span className={styles.statLabel}>{stat.label}</span>
-    </div>
+    </motion.div>
   );
 }
 
 const revealVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 60 },
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.1,
-      duration: 0.8,
-      ease: [0.25, 0.46, 0.45, 0.94],
+      delay: i * 0.15,
+      duration: 1,
+      ease: [0.16, 1, 0.3, 1],
     },
   }),
 };
@@ -40,36 +53,36 @@ export default function About() {
 
   return (
     <section id="chi-sono" className={styles.about}>
+      <div className={styles.decorOrb} />
       <div className={styles.container}>
-        {/* Editorial Layout: Staggered Content */}
         <div className={styles.editorialGrid}>
-          <motion.div 
+          <motion.div
             custom={1}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             variants={revealVariants}
             className={styles.imageSection}
           >
             <div className={styles.imageWrapper}>
               <div className={styles.imagePlaceholder} />
-              <motion.div 
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              <motion.div
+                animate={{ y: [0, -18, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                 className={styles.floatingCard}
               >
-                <span className={styles.cardIcon}>✨</span>
+                <SparkleIcon />
                 <span className={styles.cardText}>Formazione d&apos;Eccellenza</span>
               </motion.div>
             </div>
             <div className={styles.imageStripe} />
           </motion.div>
 
-          <motion.div 
+          <motion.div
             custom={2}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             variants={revealVariants}
             className={styles.contentSection}
           >
@@ -86,9 +99,9 @@ export default function About() {
                 è per me un&apos;occasione per creare qualcosa di unico e valorizzare la
                 bellezza delle tue mani.
               </p>
-              
+
               <blockquote className={styles.pullQuote}>
-                &quot;La bellezza delle mani non è solo estetica, è una forma di cura personale e fiducia in se stesse.&quot;
+                &ldquo;La bellezza delle mani non è solo estetica, è una forma di cura personale e fiducia in se stesse.&rdquo;
               </blockquote>
 
               <p>

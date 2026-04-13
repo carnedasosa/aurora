@@ -110,7 +110,7 @@ export default function Hero() {
                   custom={0}
                   style={{ display: 'inline-block' }}
                 >
-                  {line1}
+                  {line1} {line2}
                 </motion.span>
               ) : (
                 line1.split('').map((char, i) => (
@@ -127,19 +127,10 @@ export default function Hero() {
                 ))
               )}
             </span>
-            <span className={styles.line}>
-              {isMobile ? (
-                <motion.span
-                  variants={lineVariants}
-                  initial="hidden"
-                  animate="visible"
-                  custom={1}
-                  style={{ display: 'inline-block' }}
-                >
-                  {line2}
-                </motion.span>
-              ) : (
-                line2.split('').map((char, i) => (
+
+            {!isMobile && (
+              <span className={styles.line}>
+                {line2.split('').map((char, i) => (
                   <motion.span
                     key={`l2-${i}`}
                     custom={i + line1.length}
@@ -150,16 +141,17 @@ export default function Hero() {
                   >
                     {char === ' ' ? '\u00A0' : char}
                   </motion.span>
-                ))
-              )}
-            </span>
+                ))}
+              </span>
+            )}
+
             <span className={`${styles.line} ${styles.italic}`}>
               {isMobile ? (
                 <motion.span
                   variants={lineVariants}
                   initial="hidden"
                   animate="visible"
-                  custom={2}
+                  custom={1}
                   style={{ display: 'inline-block' }}
                 >
                   {line3}

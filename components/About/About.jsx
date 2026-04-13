@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useCountUp } from '../../hooks/useCountUp';
 import styles from './About.module.css';
 
@@ -48,9 +49,6 @@ const revealVariants = {
 };
 
 export default function About() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
   return (
     <section id="chi-sono" className={styles.about}>
       <div className={styles.decorOrb} />
@@ -60,12 +58,20 @@ export default function About() {
             custom={1}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: '0px' }}
             variants={revealVariants}
             className={styles.imageSection}
           >
             <div className={styles.imageWrapper}>
-              <div className={styles.imagePlaceholder} />
+              <div className={styles.imagePlaceholder}>
+                <Image
+                  src="/profilo.jpg"
+                  alt="Aurora Profilo"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <motion.div
                 animate={{ y: [0, -18, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
@@ -113,7 +119,7 @@ export default function About() {
             </div>
 
             <div className={styles.statsRow}>
-              {mounted && stats.map((stat, i) => <StatItem key={i} stat={stat} />)}
+              {stats.map((stat, i) => <StatItem key={i} stat={stat} />)}
             </div>
           </motion.div>
         </div>

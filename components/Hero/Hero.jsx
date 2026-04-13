@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import styles from './Hero.module.css';
 
 const badges = [
@@ -139,7 +140,16 @@ export default function Hero() {
           transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className={styles.imageWrapper}
         >
-          <div className={styles.imagePlaceholder} />
+          <div className={styles.imagePlaceholder}>
+            <Image 
+              src="/heroImage.png" 
+              alt="Aurora tesoro nail" 
+              fill 
+              sizes="(max-width: 968px) 100vw, 50vw"
+              priority 
+              style={{ objectFit: 'cover' }} 
+            />
+          </div>
           <motion.div 
             animate={{ 
               rotate: [0, 360],

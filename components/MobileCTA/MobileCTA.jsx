@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useThrottle } from '../../hooks/useThrottle';
 import styles from './MobileCTA.module.css';
 
 function WhatsAppIcon() {
@@ -15,13 +16,14 @@ function WhatsAppIcon() {
 export default function MobileCTA() {
   const [isVisible, setIsVisible] = useState(false);
 
+  const handleScroll = useThrottle(() => {
+    setIsVisible(window.scrollY > 400);
+  }, 100);
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(window.scrollY > 400);
-    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   return (
     <AnimatePresence>

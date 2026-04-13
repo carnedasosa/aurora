@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
+import { useThrottle } from '../../hooks/useThrottle'
 import styles from './Navbar.module.css'
 
 const navLinks = [
@@ -17,13 +19,14 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
+  const handleScroll = useThrottle(() => {
+    setIsScrolled(window.scrollY > 50)
+  }, 100)
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [handleScroll])
 
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false)
@@ -38,10 +41,13 @@ export default function Navbar() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <img
+          <Image
             src="/logo.png"
             alt="Aurora Tesoro Nail"
+            width={140}
+            height={50}
             className={styles.logoImage}
+            priority
           />
         </motion.a>
 

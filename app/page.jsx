@@ -10,12 +10,10 @@ import FAQ from '../components/FAQ/FAQ'
 import Contact from '../components/Contact/Contact'
 import Footer from '../components/Footer/Footer'
 import MobileCTA from '../components/MobileCTA/MobileCTA'
-import CustomCursor from '../components/shared/CustomCursor'
 
 export default function Home() {
   return (
     <>
-      {/* <CustomCursor /> */}
       <Navbar />
       <main>
         <div id="home" style={{ position: 'absolute', top: 0 }} />

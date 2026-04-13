@@ -167,16 +167,14 @@
 }
 
 .imagePlaceholder {
+  width: 100%;
   aspect-ratio: 4/5;
-  background-image: url('/heroImage.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-luxury-lg);
   position: relative;
   z-index: 2;
   border: 1px solid var(--glass-border);
+  overflow: hidden;
 }
 
 .imageAccent {

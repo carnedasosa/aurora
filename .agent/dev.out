@@ -1,0 +1,21 @@
+
+> my-project@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.22:3000
+
+✓ Starting...
+Creating turbopack project { dir: 'C:\\Users\\aless\\Desktop\\aurora - Copia', testMode: true }
+✓ Ready in 839ms
+ GET / 200 in 4.4s (compile: 2.2s, render: 2.2s)
+✓ Finished writing to filesystem cache in 38.0s
+✓ Finished writing to filesystem cache in 15.4s
+✓ Finished writing to filesystem cache in 28.4s
+✓ Finished writing to filesystem cache in 86s
+✓ Finished writing to filesystem cache in 14.6s
+✓ Finished writing to filesystem cache in 20.3s
+✓ Finished filesystem cache database compaction in 22.0s
+✓ Finished writing to filesystem cache in 2.1min
+[?25h

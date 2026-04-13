@@ -1,10 +1,13 @@
-import ScrollReveal from '../shared/ScrollReveal'
-import styles from './Hero.module.css'
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import styles from './Hero.module.css';
 
 const badges = [
   'Nail Artist & Educator',
   'Esperienza professionale',
-]
+];
 
 function WhatsAppIcon() {
   return (
@@ -14,50 +17,138 @@ function WhatsAppIcon() {
   )
 }
 
+const letterVariants = {
+  hidden: { y: 100, opacity: 0 },
+  visible: (i) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1.2,
+      delay: i * 0.03,
+      ease: [0.215, 0.61, 0.355, 1],
+    },
+  }),
+};
+
 export default function Hero() {
+  const line1 = "Eleganza, tecnica";
+  const line2 = "e cura in ogni dettaglio.";
+
   return (
     <section className={styles.hero}>
-      <div className={styles.orb1} />
-      <div className={styles.orb2} />
+      {/* Liquid Background Orbs */}
+      <motion.div 
+        animate={{ 
+          x: [0, 60, -40, 0],
+          y: [0, -40, 30, 0],
+          scale: [1, 1.15, 0.85, 1]
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className={styles.orb1} 
+      />
+      <motion.div 
+        animate={{ 
+          x: [0, -50, 60, 0],
+          y: [0, 30, -50, 0],
+          scale: [1, 0.8, 1.2, 1]
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className={styles.orb2} 
+      />
 
       <div className={styles.container}>
-        <ScrollReveal className={styles.content} duration={0.9}>
-          <div className={styles.badges}>
+        <div className={styles.content}>
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className={styles.badges}
+          >
             {badges.map((badge, index) => (
               <span key={index} className={styles.badge}>{badge}</span>
             ))}
-          </div>
+          </motion.div>
 
           <h1 className={styles.headline}>
-            Eleganza, tecnica e cura in ogni dettaglio.
+            <span className={styles.line}>
+              {line1.split('').map((char, i) => (
+                <motion.span
+                  key={i}
+                  custom={i}
+                  variants={letterVariants}
+                  initial="hidden"
+                  animate="visible"
+                  style={{ display: 'inline-block' }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </motion.span>
+              ))}
+            </span>
+            <span className={`${styles.line} ${styles.italic}`}>
+              {line2.split('').map((char, i) => (
+                <motion.span
+                  key={i}
+                  custom={i + line1.length}
+                  variants={letterVariants}
+                  initial="hidden"
+                  animate="visible"
+                  style={{ display: 'inline-block' }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </motion.span>
+              ))}
+            </span>
           </h1>
 
-          <p className={styles.subheadline}>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            className={styles.subheadline}
+          >
             Trattamenti unghie premium a Sannicandro di Bari per chi cerca risultati raffinati,
             precisione e un&apos;esperienza professionale.
-          </p>
+          </motion.p>
 
-          <div className={styles.ctas}>
-            <a
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 1.8 }}
+            className={styles.ctas}
+          >
+            <motion.a
               href="https://wa.me/393398274876?text=Ciao%20Aurora%2C%20vorrei%20prenotare%20un%20appuntamento."
               className={styles.primaryCta}
               target="_blank"
               rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, textShadow: "var(--prismatic)" }}
+              whileTap={{ scale: 0.95 }}
             >
               <WhatsAppIcon />
-              Prenota su WhatsApp
-            </a>
+              Prenota ora
+            </motion.a>
             <a href="#servizi" className={styles.secondaryCta}>
               Scopri i servizi
             </a>
-          </div>
-        </ScrollReveal>
+          </motion.div>
+        </div>
 
-        <ScrollReveal delay={0.2} className={styles.imageWrapper}>
+        <motion.div 
+          initial={{ opacity: 0, x: 100, rotate: 5 }}
+          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className={styles.imageWrapper}
+        >
           <div className={styles.imagePlaceholder} />
-          <div className={styles.imageAccent} />
-          <div className={styles.imageGlow} />
-        </ScrollReveal>
+          <motion.div 
+            animate={{ 
+              rotate: [0, 360],
+            }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className={styles.imageAccent} 
+          />
+          <div className={styles.chromaticOrb} />
+        </motion.div>
       </div>
     </section>
   )

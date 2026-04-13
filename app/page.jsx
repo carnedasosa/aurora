@@ -3,33 +3,29 @@ import Hero from '../components/Hero/Hero'
 import About from '../components/About/About'
 import Services from '../components/Services/Services'
 import WhyChoose from '../components/WhyChoose/WhyChoose'
-// import Portfolio from '../components/Portfolio/Portfolio'
-// import BeforeAfter from '../components/BeforeAfter/BeforeAfter'
 import Reviews from '../components/Reviews/Reviews'
 import Policy from '../components/Policy/Policy'
 import Hygiene from '../components/Hygiene/Hygiene'
-// import Products from '../components/Products/Products'
 import FAQ from '../components/FAQ/FAQ'
 import Contact from '../components/Contact/Contact'
 import Footer from '../components/Footer/Footer'
 import MobileCTA from '../components/MobileCTA/MobileCTA'
+import CustomCursor from '../components/shared/CustomCursor'
 
 export default function Home() {
   return (
     <>
+      {/* <CustomCursor /> */}
       <Navbar />
       <main>
         <div id="home" style={{ position: 'absolute', top: 0 }} />
-        <About />
         <Hero />
+        <About />
         <Services />
         <WhyChoose />
-        {/*<Portfolio />*/}
-        {/*<BeforeAfter />*/}
         <Reviews />
         <Policy />
         <Hygiene />
-        {/*<Products />*/}
         <FAQ />
         <Contact />
       </main>
